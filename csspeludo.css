@@ -9,6 +9,7 @@ h1,h2 {
 }
 
 p {
+    font-size: 18px;
     font-weight: bold;
     color: black;
     text-align: center;
@@ -20,4 +21,10 @@ ul{
     margin-left: 4cm;
     font-size: 20px;
 
+}
+
+img{
+    box-align: 1;
+    align-self: start;
+    width: 300px;
 }
