@@ -1,8 +1,23 @@
-h1 { 
-    color: crimson;
-    text-align: center;
-    text-shadow: gray;
-    font: bolder;
+
+/*Aun no puedoa gregar Negrita, sientanse libre de cambiar atributos */
+h1,h2 {
     
+    font-size: 36px;
+    color: black;
+    text-align: center;
+    
+}
+
+p {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-right: 3cm;
+    margin-left: 3cm;
+}
+
+ul{
+    margin-left: 4cm;
+    font-size: 20px;
 
 }
