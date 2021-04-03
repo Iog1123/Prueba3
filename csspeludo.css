@@ -1,5 +1,5 @@
 
-/*Aun no puedoa gregar Negrita, sientanse libre de cambiar atributos */
+/*Aun no puedo a gregar Negrita, sientanse libre de cambiar atributos */
 h1,h2 {
     
     font-size: 36px;
@@ -8,13 +8,16 @@ h1,h2 {
     
 }
 
-p {
+/* aquí se le aplicó el selector de tipo class*/
+.Pc { 
     font-size: 18px;
-    font-weight: bold;
+    font-weight: lighter; /* esta es una negrita "bold" (peso de la letra, font weigth)*/
     color: black;
-    text-align: center;
+    text-align: justify; 
     margin-right: 3cm;
     margin-left: 3cm;
+    border: 3px solid rgb(66, 163, 163);
+    padding: 20px;
 }
 
 ul{
@@ -23,8 +26,71 @@ ul{
 
 }
 
-img{
-    box-align: 1;
-    align-self: start;
+#i1{
+    box-align: 2;
     width: 300px;
+    display: inline-block;
+    padding-bottom: 0px;
+    padding-top: 100px;
+    text-align: right;
 }
+
+
+
+a{ /* arreglar la orientacion del vinculo hasta la mitad de la imagen*/
+    color: rgb(66, 163, 163);
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    display: inline-block;
+    font-size: 24px;
+    text-align: right;
+
+    
+}
+
+#p1{
+
+    font-size: 18px;
+    color: black;
+    font-weight: lighter;
+    text-align: justify;
+    margin-right: 3cm;
+    margin-left:  3cm;
+    border: 3px solid orange;
+    padding: 20px;
+}
+
+
+.imgP{
+    width: 250px;
+    height: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: block;
+
+}
+
+.ip{
+    float:left;
+    margin-top: 250px;
+    width: 300px;
+    height: 200;
+    display: inline;
+    text-align: right;
+    margin-right: 60px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+
+#pp{
+    text-align: left;
+    margin-top: 250px;
+    display: inline-block;
+   
+
+}
+
+
+
