@@ -63,18 +63,24 @@
           <tbody id="sismos"></tbody>
         </table>
       </div>
+      <div class="alert alert-danger" role="alert" id="msg"></div>
     </div>
 
     <script>
         $(document).ready(function(){
-            $("#buscar").click(function(){
-                var filter=$("#txtfilter").val();
+       $("#buscar").click(function(){
+                $("#msg").hide();
                 $("#fecha").empty();
                 $("#magnitud").empty();
                 $("#ubicación").empty();
+
+                var filter=$("#txtfilter").val();
+
+             
                 
-                if(filter.trim()>20){
-                    alert("El límite ingresado debe ser menor o igual a 20")
+                if(filter.trim()>20 ||filter.trim()<0){
+                    $("#msg").html("Debes ingresar un límite mayor a 0 y menor a 20")
+                    $("#msg").show();
                     $("#sismos").empty();
                 } else{
                     $("#sismos").empty();
