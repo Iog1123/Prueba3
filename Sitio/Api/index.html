@@ -67,10 +67,20 @@
     <script>
         $(document).ready(function(){
             $("#buscar").click(function(){
-                var filter= $("#txtfilter").val();
-                alert(filter)
+                var filter=$("#txtfilter").val();
+                $("#fecha").empty();
+                $("#magnitud").empty();
+                $("#ubicación").empty();
+                
+                if(filter.trim()>20){
+                    alert("El límite ingresado debe ser menor o igual a 20")
+                    $("#sismos").empty();
+                } else{
+                    $("#sismos").empty();
+                   
+                }
 
-                $("#sismos").empty();
+             
                 
             })
         });
@@ -81,6 +91,11 @@
           $("#buscar").click(function(){
             $.get( "https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos", function( data ) {
               $.each(data.ultimos_sismos, function(i, item) {
+                  if(i==0){
+                    $("#fecha").append(item.chilean_time);
+                    $("#magnitud").append(item.magnitude);
+                    $("#ubicación").append(item.reference);
+                  } else{
                 var fila;
                 fila = "<tr>"   +
                           "<td>" + i + "</td>" +
@@ -90,6 +105,7 @@
                         "</tr>";
 
                 $("#sismos").append(fila);
+                  }
               });
             });
           });
