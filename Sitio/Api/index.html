@@ -15,6 +15,7 @@
      
   </head>
   <body>
+    
     <div class="container">
       <div class="row">
         <h3>Sismos</h3>
@@ -36,20 +37,20 @@
         <h3>Último Sismo</h3>
       </div>
 
-    
+      <div class="container border border-4">
       <div class="row">
-        <h5>Fecha:</h5><h5 id="fecha"></h5>
+        <h5>Fecha :</h5><h5></h5><h5 id="fecha"></h5>
       </div>
       <div class="row">
-        <h5>Magnitud:</h5><h5 id="magnitud"></h5>
+        <h5>Magnitud :</h5><h5 id="magnitud"></h5>
       </div>
       <div class="row">
-        <h5>Ubicación:</h5><h5 id="ubicación"></h5>
+        <h5>Ubicación :</h5><h5 id="ubicación"></h5>
       </div>
-     
+    </div>
 
       <div class="row">
-        <table class="table" id="sismos">
+        <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -59,7 +60,7 @@
             </tr>
 
           </thead>
-          <tbody></tbody>
+          <tbody id="sismos"></tbody>
         </table>
       </div>
     </div>
@@ -92,9 +93,9 @@
             $.get( "https://chilealerta.com/api/query/?user=demo&select=ultimos_sismos", function( data ) {
               $.each(data.ultimos_sismos, function(i, item) {
                   if(i==0){
-                    $("#fecha").append(item.chilean_time);
-                    $("#magnitud").append(item.magnitude);
-                    $("#ubicación").append(item.reference);
+                    $("#fecha").append( item.chilean_time);
+                    $("#magnitud").append( item.magnitude);
+                    $("#ubicación").append( item.reference);
                   } else{
                 var fila;
                 fila = "<tr>"   +
