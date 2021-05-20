@@ -66,8 +66,8 @@
       <div class="col-6">
         <form action="">
           <div class="form-group">
-            <label for="rut"><strong>Rut:</strong></label>
-            <input type="rut" class="form-control" id="rut" minlength="7" maxlength="9" required placeholder="Ingrese su rut sin puntos ni guion" name="rut">
+            <label for="rut"><strong>Run:</strong></label>
+            <input type="rut" class="form-control" id="rut" minlength="7" maxlength="9" required placeholder="Ingrese su Run sin puntos ni guion" name="rut">
             
           </div>
 
@@ -78,7 +78,7 @@
 
           <div class="form-group">
             <label for="edad"><strong>Edad:</strong></label>
-            <input type="edad" class="form-control" id="edad" name="edad">
+            <input type="edad" class="form-control"  id="edad" name="edad">
           </div>
 
           <div class="form-group">
@@ -105,19 +105,49 @@
             <textarea name="comentario" id="comentario" cols="87" rows="10" placeholder="500 Caracteres maximo" maxlength="500"></textarea>
           </div> 
           <div class="form-group" style="margin-top:6px;" >
-          <button type="submit" id="enviar"  class="btn-success" >Enviar</button>
+          <button type="submit" id="enviar"  onclick="validaFormulario()" class="btn-success" >Enviar</button>
           </div>
         </form>
         </div>
    </div>
 </div>
-
   <script>
-  $(document).ready(function(){
+  function validaFormulario(){
+    event.preventDefault();
+    var valRut=validaRut();
+    var edad= $("#edad").val();
+    var telefono= $("#telefono").val().trim();
+    var mail= $("#correo").val().trim();
 
 
-  
-  })
+    
+
+  }
+  function Telefono(){
+
+  }
+  function Email(){
+
+  }
+  function validaRut(){
+    var txtRut= $("#rut").val();
+    var toText = txtRut.toString(); //convert to string
+    var lastChar = toText.slice(-1); //gets last character 
+    var cadenaSinUltimoCaracter = txtRut.substring(0, txtRut.length - 1);
+    console.log(lastChar);
+    $.get( "https://api.libreapi.cl/rut/digit?rut="+cadenaSinUltimoCaracter, function( data ) {
+      console.log(data);
+      if (data.status=="success"){
+        if (data.data.digit==lastChar){         
+          return true;
+        }else{          
+          return false;
+        }
+      }else{        
+        return false;
+      }
+    });
+  }
   </script>
 
   <script src="js/bootstrap.bundle.min.js"></script>
