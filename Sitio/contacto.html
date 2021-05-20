@@ -65,10 +65,10 @@
   </div>
 
 
-  <div class="container">
+  <div class="container ">
     <div class="row">
       <div class="col-6">
-        <img src="img/contacto.jpg" alt="contact">
+        <img  src="img/contacto.jpg"  alt="contact">
       </div>
 
       <div class="col-6">
@@ -105,7 +105,7 @@
           <div class="form-group">
             <label for="motivo"><strong>Motivo:</strong></label>
             <select id="motivo" required class="dropdown-toggle form-control">
-              <option value="0" selected disabled>Seleccione una opción </option>
+              <option value="0" selected disabled>--Seleccione una opción-- </option>
               <option value="1">Consulta</option>
               <option value="2">Reclamos</option>
               <option value="3">Sugerencias</option>
@@ -122,6 +122,7 @@
           <div class="form-group" style="margin-top:6px;">
             <button type="submit" id="enviar" onclick="validaFormulario()" class="btn-success">Enviar</button>
             <div class="alert alert-danger" role="alert" id="errorSubmit"></div>
+            <div class="alert alert-success" id="exito" ><strong>Exito!</strong> Solicitud registrada exitosamente.</div>
           </div>
 
 
@@ -132,9 +133,13 @@
 
   <script>
     $("#errorSubmit").hide();
+    $("#exito").hide();
 
     var mshValidaciones = "";
 
+
+
+    // Funcion que permite validar los datos ingresados en el formulario
     function validaFormulario() {
       event.preventDefault();
       var mshValidaciones = "";
@@ -147,7 +152,7 @@
 
 
       if ($("#rut").val()==''){
-        mshValidaciones = mshValidaciones + '>Ingrese un rut\n';
+        mshValidaciones = mshValidaciones + '>Debe ingresar un rut\n';
       }else{
         if (valRut == false) {
               mshValidaciones = mshValidaciones + '<br>\n>Rut no valido\n';
@@ -157,10 +162,10 @@
     
 
       if (edad == '') {
-        mshValidaciones = mshValidaciones + '<br>\n>Ingrese edad\n';
+        mshValidaciones = mshValidaciones + '<br>\n>Debe ingresar una edad valida\n';
       } else {
         if (edad >= 18 && edad <= 110) {
-          //$("span").text("Validado").show();
+          ;
         } else {
           mshValidaciones = mshValidaciones + '<br>\n>Edad no valida\n';
         }
@@ -169,41 +174,40 @@
 
 
       if (telefono == '' && mail == '') {
-        mshValidaciones = mshValidaciones + '<br>\n>Debe ingresar su mail o telefono\n';
-        //$("#errorSubmit").show().fadeOut(2000);
+        mshValidaciones = mshValidaciones + '<br>\n>Debe ingresar un mail o telefono\n';
+        
 
       } else {
         if (telefono != '') {
           var fnTelefono = Telefono();
           if (!fnTelefono) {
-            mshValidaciones = mshValidaciones + '<br>\n>Numero de telefono Incorrecto\n';
-            //$("#errorTelefono").show().fadeOut(1000);
+            mshValidaciones = mshValidaciones + '<br>\n>Numero de telefono no valido\n';
+            
           }
         }
         if (mail != '') {
           var fnMail = ValidaMail();
           if (!fnMail) {
             mshValidaciones = mshValidaciones + '<br>\n>Ingrese un mail valido\n';
-            //$("#errorCorreo").show().fadeOut(1000);
+            
           }
         }
       }
       if (vmotivo == '0') {
         mshValidaciones = mshValidaciones + '<br>\n>Seleccione un motivo de la lista\n';
-        //$("#errorMotivo").show().fadeOut(1000);
-
       }
 
+      
       if (txtComentario == '') {
-        mshValidaciones = mshValidaciones + '<br>\n>Debe escribir comentario\n';
+        mshValidaciones = mshValidaciones + '<br>\n>Debe escribir algún comentario\n';
       }
 
 
       if(mshValidaciones!=''){
         $("#errorSubmit").append(mshValidaciones);
-        $("#errorSubmit").show();
-
-
+        $("#errorSubmit").show().fadeOut(5000);
+      }else{
+        $("#exito").show();
       }
 
 
@@ -221,9 +225,8 @@
       } else {
         return false;
       }
-
-
     }
+
     function ValidaMail() {
       var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
       if (regex.test($('#correo').val().trim())) {
@@ -233,12 +236,13 @@
       }
     }
 
+    // Funcion que permite verificar run, consumiendo api y aplicando validaciones
     function validaRut() {
       var txtRut = $("#rut").val();
 
       if (txtRut != '') {
-        var toText = txtRut.toString(); //convert to string
-        var lastChar = toText.slice(-1); //gets last character 
+        var toText = txtRut.toString(); 
+        var lastChar = toText.slice(-1); //obtener ultimo caracter
         var cadenaSinUltimoCaracter = txtRut.substring(0, txtRut.length - 1);
         
         $.get("https://api.libreapi.cl/rut/digit?rut=" + cadenaSinUltimoCaracter, function (data) {         
