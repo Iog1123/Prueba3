@@ -135,7 +135,7 @@
     $("#errorSubmit").hide();
     $("#exito").hide();
 
-    var mshValidaciones = "";
+    
 
 
 
@@ -149,10 +149,11 @@
       var mail = $("#correo").val().trim();
       var vmotivo = $('#motivo option:selected').val();
       var txtComentario = $("#comentario").val();
+      
 
 
       if ($("#rut").val()==''){
-        mshValidaciones = mshValidaciones + '>Debe ingresar un rut\n';
+        mshValidaciones = mshValidaciones + '<strong>>Debe ingresar un rut\n</strong>';
       }else{
         if (valRut == false) {
               mshValidaciones = mshValidaciones + '<br>\n>Rut no valido\n';
@@ -162,50 +163,52 @@
     
 
       if (edad == '') {
-        mshValidaciones = mshValidaciones + '<br>\n>Debe ingresar una edad valida\n';
+        mshValidaciones = mshValidaciones + '<strong><br>\n>Debe ingresar una edad valida\n</strong>';
       } else {
         if (edad >= 18 && edad <= 110) {
           ;
         } else {
-          mshValidaciones = mshValidaciones + '<br>\n>Edad no valida\n';
+          mshValidaciones = mshValidaciones + '<strong><br>\n>Edad no valida\n</strong>';
         }
       }
 
 
 
       if (telefono == '' && mail == '') {
-        mshValidaciones = mshValidaciones + '<br>\n>Debe ingresar un mail o telefono\n';
+        mshValidaciones = mshValidaciones + '<strong><br>\n>Debe ingresar un mail o telefono\n</strong>';
         
 
       } else {
         if (telefono != '') {
           var fnTelefono = Telefono();
           if (!fnTelefono) {
-            mshValidaciones = mshValidaciones + '<br>\n>Numero de telefono no valido\n';
+            mshValidaciones = mshValidaciones + '<strong><br>\n>Numero de telefono no valido\n</strong>';
             
           }
         }
         if (mail != '') {
           var fnMail = ValidaMail();
           if (!fnMail) {
-            mshValidaciones = mshValidaciones + '<br>\n>Ingrese un mail valido\n';
+            mshValidaciones = mshValidaciones + '<strong><br>\n>Ingrese un mail valido\n</strong>';
             
           }
         }
       }
       if (vmotivo == '0') {
-        mshValidaciones = mshValidaciones + '<br>\n>Seleccione un motivo de la lista\n';
+        mshValidaciones = mshValidaciones + '<strong><br>\n>Seleccione un motivo de la lista\n</strong>';
       }
 
       
       if (txtComentario == '') {
-        mshValidaciones = mshValidaciones + '<br>\n>Debe escribir algún comentario\n';
+        mshValidaciones = mshValidaciones + '<strong><br>\n>Debe escribir algún comentario\n</strong>';
       }
 
+      
 
       if(mshValidaciones!=''){
         $("#errorSubmit").append(mshValidaciones);
-        $("#errorSubmit").show().fadeOut(5000);
+        $("#errorSubmit").show().fadeOut(6000);
+        mshValidaciones = undefined;
       }else{
         $("#exito").show();
       }
