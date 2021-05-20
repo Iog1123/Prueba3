@@ -65,7 +65,7 @@
         <form action="">
           <div class="form-group">
             <label for="rut"><strong>Rut:</strong></label>
-            <input type="rut" class="form-control" id="rut" placeholder="Ingrese su rut sin puntos ni guion" name="rut">
+            <input type="rut" class="form-control" id="rut" maxlength="7" required placeholder="Ingrese su rut sin puntos ni guion" name="rut">
           </div>
 
           <div class="form-group">
@@ -90,8 +90,12 @@
 
           <div class="form-group">
             <label for="motivo"><strong>Motivo:</strong></label>
-            <button class="dropdown-toggle form-control" type="button" data-toggle="dropdown">Dropdown Example
-                <span class="caret"></span></button>
+            <select  id="motivo" class="dropdown-toggle form-control">
+              <option value="" selected disabled >Seleccione una opción </option>
+              <option value="atencion">Atencion al cliente</option>
+              <option value="reclamo">Reclamos</option>
+              <option value="sugerencia">Sugerencias</option>
+            </select>
           </div>
           <div class="form-group" style="margin: 6px;">
             <label for="comentario"><strong>Comentario</strong></label>
