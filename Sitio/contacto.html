@@ -78,7 +78,8 @@
 
           <div class="form-group">
             <label for="edad"><strong>Edad:</strong></label>
-            <input type="edad" class="form-control"  id="edad" name="edad">
+            <input type="edad" class="form-control" required onblur="validaEdad(this)" id="edad" name="edad">
+            <span></span>
           </div>
 
           <div class="form-group">
@@ -88,16 +89,17 @@
 
           <div class="form-group">
             <label for="telefono"><strong>Telefono:</strong></label>
-            <input type="telefono" class="form-control" id="telefono"  name="telefono">
+            <input type="telefono" class="form-control" id="telefono" placeholder="+569XXXXXXXX" name="telefono">
           </div>
 
           <div class="form-group">
             <label for="motivo"><strong>Motivo:</strong></label>
-            <select  id="motivo" class="dropdown-toggle form-control">
-              <option value="" selected disabled >Seleccione una opción </option>
-              <option value="atencion">Atencion al cliente</option>
-              <option value="reclamo">Reclamos</option>
-              <option value="sugerencia">Sugerencias</option>
+            <select  id="motivo" required class="dropdown-toggle form-control">
+              <option value="0" selected disabled >Seleccione una opción </option>
+              <option value="1">Consulta</option>
+              <option value="2">Reclamos</option>
+              <option value="3">Sugerencias</option>
+              <option value="4">Otros</option>
             </select>
           </div>
           <div class="form-group" style="margin: 6px;">
@@ -111,6 +113,7 @@
         </div>
    </div>
 </div>
+
   <script>
   function validaFormulario(){
     event.preventDefault();
@@ -118,19 +121,59 @@
     var edad= $("#edad").val();
     var telefono= $("#telefono").val().trim();
     var mail= $("#correo").val().trim();
-
-
+    if (telefono=='' && mail==''){
+      alert("Debe ingresar telefono o mail")
+    }else{
+      if(telefono!=''){
+        var fnTelefono=Telefono();
+        if(!fnTelefono){
+          alert('Telefono malo');
+        }
+      }
+      if(mail!=''){
+        var fnMail=ValidaMail();
+        if(!fnMail){
+          alert('Correo malo');
+        }
+      }
+    }
+    
+    
     
 
   }
+  function validaEdad(edad){
+    if (edad.value >=18 && edad.value<=110){
+      $( "span" ).text( "Validado" ).show();     
+    }else{
+      $( "span" ).text( "Edad Incorrecta!" ).show().fadeOut( 1000 );     
+    }
+  }
+
   function Telefono(){
+    var regex= /^(\+?56)?(\s?)(0?9)(\s?)[9876543]\d{7}$/
+    if (regex.test($("#telefono").val().trim())){
+      return true;
+    }else{
+      return false;
+    }
+
 
   }
-  function Email(){
-
+  function ValidaMail(){
+    var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+    if (regex.test($('#correo').val().trim())) {
+      return true;
+    }else{
+      return false;
+    }
   }
+
   function validaRut(){
     var txtRut= $("#rut").val();
+
+ if (txtRut !='')
+{
     var toText = txtRut.toString(); //convert to string
     var lastChar = toText.slice(-1); //gets last character 
     var cadenaSinUltimoCaracter = txtRut.substring(0, txtRut.length - 1);
@@ -147,6 +190,10 @@
         return false;
       }
     });
+  }else{    
+    alert('Ingrsa Rut');
+    return false;
+  }
   }
   </script>
 
