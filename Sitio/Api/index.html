@@ -68,14 +68,13 @@
          <!-----emisión de mensajes, limpieza  y validaciones del filtro----->
     <script>
         $(document).ready(function(){
+           $("#msg").hide();
        $("#buscar").click(function(){
                 $("#msg").hide();
                 $("#fecha").empty();
                 $("#magnitud").empty();
                 $("#ubicación").empty();
-
                 var filter=$("#txtfilter").val();
-
                 if(filter.trim()>20 ||filter.trim()<0){
                   $("#msg").show();
                     $("#msg").html("Debes ingresar un límite mayor a 0 y menor a 20")
@@ -110,7 +109,9 @@
                           "<td>" + item.reference + "</td>" +
                         "</tr>";
                 $("#sismos").append(fila);
-                  } else{var fila;
+                  } else if(filter>20 || filter<0 ){
+                $("#sismos").empty();
+                  }else{var fila;
                 fila = "<tr>"   +
                           "<td>" + i + "</td>" +
                           "<td>" + item.chilean_time + "</td>" +
