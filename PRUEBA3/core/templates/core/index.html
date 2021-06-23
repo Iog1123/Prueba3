@@ -1,5 +1,5 @@
 
-{% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,6 +8,7 @@
     <meta name="description" content="">
  
     <title>El Tablazo</title>
+{% load static %}
 <link href="static/core/css/bootstrap.min.css" rel="stylesheet">
 <link href="static/core/css/carousel.css" rel="stylesheet">
 <link href="static/core/css/cssTablazo.css" rel="stylesheet">
@@ -17,7 +18,7 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html" >Inicio</a>
+      <a class="navbar-brand" href="{% url 'index' %}" >Inicio</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,15 +29,15 @@
             Productos
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="tabla1.html">Tabla Salada</a></li>
-            <li><a class="dropdown-item" href="tabla2.html">Tabla Dulce</a></li>            
-            <li><a class="dropdown-item" href="tabla3.html">Tabla Mixta</a></li>
+            <li><a class="dropdown-item" href="{% url 'tabla1' %}">Tabla Salada</a></li>
+            <li><a class="dropdown-item" href="{% url 'tabla2' %}">Tabla Dulce</a></li>            
+            <li><a class="dropdown-item" href="{% url 'tabla3' %}">Tabla Mixta</a></li>
           </ul>
         </li> 
           <li class="nav-item">
-            <a class="nav-link" href="somos.html" tabindex="-1">Quienes somos</a></li>
+            <a class="nav-link" href="{% url 'somos' %}" tabindex="-1">Quienes somos</a></li>
           <li class="nav-item">
-            <a class="nav-link" href="contacto.html" tabindex="-1">Contacto</a></li>
+            <a class="nav-link" href="{% url 'contacto' %}" tabindex="-1">Contacto</a></li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'proveedor' %}"  tabindex="-1"> Proveedores</a>
           </li>
@@ -116,6 +117,7 @@ Ofertas 30% tarjeta Banco Chile
 
 
     <script src="static/core/js/bootstrap.bundle.min.js"></script>
+    
 
       
   </body>

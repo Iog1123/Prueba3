@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,16 +7,17 @@
     <meta name="description" content="">
  
     <title>El Tablazo</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
- <link href="css/cssTablazo.css" rel="stylesheet">
-
+{% load static %}
+<link href="static/core/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/core/css/carousel.css" rel="stylesheet">
+<link href="static/core/css/cssTablazo.css" rel="stylesheet">
   </head>
   <body>
     
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Inicio</a>
+      <a class="navbar-brand" href="{% url 'index' %}" >Inicio</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,16 +28,18 @@
             Productos
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="tabla1.html">Tabla Salada</a></li>
-            <li><a class="dropdown-item" href="tabla2.html">Tabla Dulce</a></li>            
-            <li><a class="dropdown-item" href="tabla3.html">Tabla Mixta</a></li>
+            <li><a class="dropdown-item" href="{% url 'tabla1' %}">Tabla Salada</a></li>
+            <li><a class="dropdown-item" href="{% url 'tabla2' %}">Tabla Dulce</a></li>            
+            <li><a class="dropdown-item" href="{% url 'tabla3' %}">Tabla Mixta</a></li>
           </ul>
         </li> 
           <li class="nav-item">
-            <a class="nav-link" href="somos.html" tabindex="-1">Quienes somos</a>
-          </li>
+            <a class="nav-link" href="{% url 'somos' %}" tabindex="-1">Quienes somos</a></li>
           <li class="nav-item">
-            <a class="nav-link" href="contacto.html" tabindex="-1">Contacto</a></li>
+            <a class="nav-link" href="{% url 'contacto' %}" tabindex="-1">Contacto</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'proveedor' %}"  tabindex="-1"> Proveedores</a>
+          </li>
         </ul>
          
       </div>
@@ -50,7 +54,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8">
-          <img src="img/dulce.jpg" class="tamanoImagen" alt="Tabla dulce">
+          <img src="static/core/img/dulce.jpg" class="tamanoImagen" alt="Tabla dulce">
         </div>
    
         <div class="col-sm-4" style="text-align: left;">
@@ -74,7 +78,7 @@
  <div class="row">
    <div class="col-sm"> 
       <p>Valor $9.990</p>
-      <p><a class="btn btn-secondary" href="index.html">Volver</a></p>
+      <p><a class="btn btn-secondary" href="{% url 'index' %}">Volver</a></p>
     </div> 
    
  </div>
@@ -87,6 +91,6 @@
 </main>
 
 
-    <script src="js/bootstrap.bundle.min.js"></script> 
+  <script src="static/core/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
