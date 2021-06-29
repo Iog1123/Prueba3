@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Pais(models.Model):
      id_pais=models.IntegerField(primary_key=True,unique=True,verbose_name="id pais")
