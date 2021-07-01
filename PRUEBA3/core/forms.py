@@ -7,5 +7,5 @@ class ProveedorForm(ModelForm):
         model = Proveedor
         fields = ['id_Proveedor', 'nombreCompleto', 'telefono', 'direccion','email','password','Pais']
         widgets = {
-        'password': forms.PasswordInput(),
+        'password': forms.PasswordInput()
     }
