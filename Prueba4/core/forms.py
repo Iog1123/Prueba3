@@ -7,9 +7,9 @@ from django import forms
 
 
 class ProveedorForm(ModelForm):
-    
+    password = forms.CharField(widget=forms.PasswordInput(render_value=True))
     class Meta:
-        password = forms.CharField(widget=forms.PasswordInput())
+        
         model = Proveedor
         fields = ['nombreCompleto', 'telefono', 'direccion','email','password','Pais']
         
