@@ -1,0 +1,11 @@
+
+[
+  {
+    "model": "core.Pais",
+    "pk": 1,
+    "fields": {
+      "nombre_pais": "Chile"
+    }
+  }
+  
+]
