@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def lista_proveedores(request):
     """
     Lista todos los vehiculos
@@ -34,7 +34,7 @@ def lista_proveedores(request):
 
 @csrf_exempt
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def detalle_proveedores(request, id):
     """
     get, update, delete de un proveedor en particular
