@@ -13,7 +13,7 @@ class Pais(models.Model):
 
 
 class Proveedor(models.Model):
-    id_Proveedor=models.AutoField(primary_key=True, verbose_name="id de proveedor")
+    id_Proveedor=models.IntegerField(primary_key=True, verbose_name="id de proveedor")
     nombreCompleto=models.CharField(max_length=50,null=False, verbose_name="nombre completo proveedor")
     telefono=models.IntegerField(null=False)
     direccion=models.CharField(max_length=100,null=False, verbose_name="direccion proveedor")

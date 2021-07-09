@@ -3,7 +3,7 @@ from core.models import Proveedor
 
 
 class ProveedorSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         
         model = Proveedor
